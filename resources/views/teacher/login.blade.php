@@ -96,7 +96,7 @@
             e.preventDefault();
 
 
-            if ($(this).val().length >= 6 && !isNaN($(this).val())) {
+            if ($(this).val().length >= 6 ) {
 
 
                 $.ajax({
