@@ -2,114 +2,122 @@
 
 @section('main-content')
 
-    <form method="POST" action="{{ route('so.auth') }}">
-        @csrf
-        <div class="row justify-content-md-center">
-            <div class="col-xl-4 col-lg-5 col-md-6 col-sm-12">
+<form method="POST" action="{{ route('so.auth') }}">
+    @csrf
+    <div class="row justify-content-md-center">
+        <div class="col-xl-4 col-lg-5 col-md-6 col-sm-12">
 
-                <div class="login-screen">
+            <div class="login-screen">
 
-                    <div class="login-box">
-                        <!--error msg-->
-                        @if (Session::get('error'))
-                            <div class="alert alert-warning" role="alert">
-                                {{ Session::get('error') }}
-                                <button type="button" class="close"
-                                        data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
+                <div class="login-box">
+                    <!--error msg-->
+                    @if (Session::get('error'))
+                    <div class="alert alert-warning" role="alert">
+                        {{ Session::get('error') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
 
                     @endif
                     <!--end error msg-->
-                        <a href="#" class="login-logo" style="display: block;
+                    <a href="#" class="login-logo" style="display: block;
                                                         margin-left: auto;
                                                         margin-right: auto;
                                                         width: 22%;">
-                            <div class="form-group">
-                                <img src="{{ asset('asset/img/logo/ahsec_logo.png') }}" alt="CoolAdmin" width="72"
-                                     height="72">
-                            </div>
-
-                        </a>
-                        <h5 style="text-align: center;"><b>SEBA REPORTING PORTAL</b><br/>
-                            {{--  <span style="color: #0a3060;font-weight: bold"> H.S. Final Year Exam 2022</span>  --}}
-
-                        </h5>
-
                         <div class="form-group">
-                            <input type="text" class="form-control" name="code" id="old"
-                                   placeholder="Enter School Code"
-                                   minlength="6" maxlength="6"
-                                   oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
-                                   required/>
-                            <br>
-                            <span id="school_name" style="color: green"></span>
+                            <img src="{{ asset('asset/img/logo/ahsec_logo.png') }}" alt="CoolAdmin" width="72" height="72">
                         </div>
-                        <div class="form-group">
-                            <input type="text" name="login_pin" class="form-control" placeholder="Login Pin"
-                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  required/>
-                            <br>
-                            {{--  <span style="color: #0a58ca">Use Password or OTP sent to mobile to login</span>  --}}
-                        </div>
-                        <div class="actions">
 
-                            <button type="submit" class="btn btn-info">Login</button>
-                        </div>
-                        {{--  <a href="{{ route('so.forgot-password') }}">Forgot password?</a>  --}}
+                    </a>
+                    <h5 style="text-align: center;"><b>SEBA REPORTING PORTAL</b><br />
+                        {{-- <span style="color: #0a3060;font-weight: bold"> H.S. Final Year Exam 2022</span>  --}}
+
+                    </h5>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="code" id="code" placeholder="Enter School Code" minlength="6" maxlength="10" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" required />
                         <br>
-                        {{--  <br>
+                        <span id="otp_message" style="color: green;"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="login_pin" class="form-control" placeholder="Login Pin" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" required />
+                        <br>
+                        {{-- <span style="color: #0a58ca">Use Password or OTP sent to mobile to login</span>  --}}
+                    </div>
+                    <div class="actions">
+
+                        <button type="submit" class="btn btn-info">Login</button>
+                    </div>
+                    {{-- <a href="{{ route('so.forgot-password') }}">Forgot password?</a> --}}
+                    <br>
+                    {{-- <br>
                         <a href="{{ asset('pdf/manual.pdf') }}" style="color: #cb08cb;font-weight: bold">DOWNLOAD MANUAL</a><br><br>
 
-                        <span style="color: green;font-weight: bold">Call 9957428585/8638100894 for any issues</span>  --}}
-                    </div>
+                    <span style="color: green;font-weight: bold">Call 9957428585/8638100894 for any issues</span> --}}
                 </div>
             </div>
         </div>
-    </form>
+    </div>
+</form>
 @endsection
 @section('custom-scripts')
 
-    {{--  <script>
+<script>
+    $(document).ready(function() {
+
+       
+
+        $('#code').keyup(function(e) {
+
+            e.preventDefault();
 
 
-        $(document).ready(function () {
-            $('#old').keyup(function (e) {
-
-                e.preventDefault();
+            if ($(this).val().length >= 6 && !isNaN($(this).val())) {
 
 
-                var x = $(this).val();
+                $.ajax({
+                    type: 'POST',
+                    url: "{{ route('schoolnameajax') }}",
+                    data: {
+                        "_token": "{{ csrf_token() }}",
 
-                if (x.length === 10) {
-                    $.ajax({
 
-                        type: 'POST',
+                        "code": $(this).val(),
 
 
-                        url: "{{ route('so.name') }}",
+                    },
+                    dataType: 'json',
+                    success: function(data) {
 
-                        data: {mobile: x, _token: "{{ csrf_token() }}"},
 
-                        success: function (data) {
+                        $("#otp_message").html(data.message);
+                        if (data.status === "success") {
 
-                            var m = JSON.parse(data);
-                            if (m.status === "success") {
 
-                                $("#school_name").html(m.name);
-                                $("#school_name").css('color', 'green');
+                            $("#otp_message").css("color", "green");
 
-                            } else {
+                        } else {
 
-                                $("#school_name").html("");
-                                $("#school_name").css('color', 'red');
-                            }
+                            $("#otp_message").css("color", "red");
+
+
                         }
-                    });
-                }
-            });
+
+
+                    },
+
+                    error: function(data) {
+
+                    }
+                });
+
+            }
+
+
         });
 
-    </script>  --}}
+    });
+</script>
 
 @endsection
