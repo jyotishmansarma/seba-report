@@ -17,18 +17,18 @@ class LoginController extends Controller
        // dd('hi');
         $request->validate([
 
-            'code' => ['required', 'digits:6'],
-            'login_pin' => ['required', 'digits:6'],
+            'code' => ['required'],
+            'login_pin' => ['required', 'digits:4'],
         ]);
         $teacher = School::where(['code' => $request->code, 'login_pin' => $request->login_pin])->first();
 
         if ($teacher) {
 
             Auth::guard('school')->login($teacher, 1);
-            return redirect()->route('so.firstChangePassword');
+            return redirect()->route('teacher.teacher_details');
         } else {
 
-            return redirect()->back()->withInput()->withErrors('Invalid details provided. If forgot details then use forgot login details option below');
+            return redirect()->back()->withInput()->withErrors('Invalid details provided.');
         }
 
     }
@@ -38,6 +38,6 @@ class LoginController extends Controller
 
         Session::flush();
         Auth::guard('school')->logout();
-        return redirect()->route('so.login');
+        return redirect()->route('teacher.login');
     }
 }

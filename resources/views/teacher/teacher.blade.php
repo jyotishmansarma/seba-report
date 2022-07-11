@@ -1,4 +1,4 @@
-@extends('so.layout.master')
+@extends('teacher.layout.master')
 
 @section('custom-style')
     <style type="text/css">
@@ -80,10 +80,8 @@
                     </ul>
                 </div>
             @endif
-            <marquee style="color:red"><i class="icon-warning"></i><b>Please update your password to continue</b>
-            </marquee>
             <br><br>
-            <form action="{{ route('so.firstChangePassword') }}" method="post">
+            <form action="{{ route('teacher.teacher_details') }}" method="post">
                 @csrf
                 <div class="card m-0">
 
@@ -97,32 +95,21 @@
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                 <div class="form-group">
                                     <label for="centre" class="col-form-label"> School Code</label>
-                                    <input type="number" class="form-control" name="code" id="code"
-                                           value="" placeholder="Enter School code" readonly>
+                                    <input type="Text" class="form-control" name="code" id="code"
+                                           value="{{Auth::guard('school')->user()->code}}" placeholder="Enter School code" readonly>
 
                                 </div>
                             </div>
                         </div>
 
-
-                        <div class="row gutters">
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                                <div class="form-group">
-                                    <div id="msg">
-                                        <h6> Password must contain the following:</h6>
-                                        <p id="length" class="invalid"> Minimum 5 Character.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
 
                         <div class="row gutters">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                 <div class="form-group">
                                     <label for="bankName" class="col-form-label">Name</label>
-                                    <input type="password" class="form-control" name="password_confirmation"
-                                           placeholder="Enter Confirm password">
+                                    <input type="text" class="form-control" name="name"
+                                           placeholder="Enter Name">
 
                                 </div>
                             </div>
@@ -131,8 +118,8 @@
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                 <div class="form-group">
                                     <label for="bankName" class="col-form-label">Mobile</label>
-                                    <input type="password" class="form-control" name="password_confirmation"
-                                           placeholder="Enter Confirm password">
+                                    <input type="text" class="form-control" name="mobile"
+                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" minlength="10" maxlength="10"    placeholder="Enter Mobile">
 
                                 </div>
                             </div>
@@ -141,8 +128,8 @@
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                 <div class="form-group">
                                     <label for="bankName" class="col-form-label">Email</label>
-                                    <input type="password" class="form-control" name="password_confirmation"
-                                           placeholder="Enter Confirm password">
+                                    <input type="email" class="form-control" name="email"
+                                           placeholder="Enter Email">
 
                                 </div>
                             </div>
@@ -151,7 +138,7 @@
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                 <div class="form-group">
                                     <label for="bankName" class="col-form-label">Subject</label>
-                                    <select class="form-control" id="examShift" name="examShift" required="">
+                                    <select class="form-control" id="examShift" name="subject" required="">
                                         <option value="0">--Select One--</option>
                                         <option value="1">English </option>
                                         <option value="2">Maths </option>
@@ -172,14 +159,14 @@
 
                                 </div>
                             </div>
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <div class="col-xl-12">
                                     <button type="reset" id="reset" class="btn btn-danger float-right" onclick="e()">
                                         Reset
                                     </button>
 
                                 </div>
-                            </div>
+                            </div> --}}
 
                         </div>
 
