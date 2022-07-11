@@ -39,15 +39,15 @@
                         <div class="form-group">
                             <input type="text" class="form-control" name="code" id="old"
                                    placeholder="Enter School Code"
-                                   minlength="6" maxlength="6"
-                                   oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                                   minlength="7" maxlength="7"
+                                  
                                    required/>
                             <br>
                             <span id="school_name" style="color: green"></span>
                         </div>
                         <div class="form-group">
                             <input type="text" name="login_pin" class="form-control" placeholder="Login Pin"
-                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  required/>
+                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  minlength="4" maxlength="4" required/>
                             <br>
                             {{--  <span style="color: #0a58ca">Use Password or OTP sent to mobile to login</span>  --}}
                         </div>

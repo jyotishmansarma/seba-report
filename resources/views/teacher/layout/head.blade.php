@@ -8,10 +8,10 @@
 
     <!-- Meta -->
     <meta name="description" content="AHSEC SO PORTAL">
-    <link rel="shortcut icon" href="{{asset('asset/img/fav.png')}}" />
+    {{-- <link rel="shortcut icon" href="{{asset('asset/img/fav.png')}}" /> --}}
 
     <!-- Title -->
-    <title>AHSEC SO PORTAL</title>
+    <title>SEBA</title>
 
 
     <!-- *************
