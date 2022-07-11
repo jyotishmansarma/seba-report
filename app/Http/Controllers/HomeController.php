@@ -6,6 +6,7 @@ use App\Models\Admin\So;
 use App\Models\Centerlist;
 use App\Models\ExamRoutine;
 use App\Models\ExpelledStudentList;
+use App\Models\School;
 use App\Models\SoReport;
 use App\Models\TimeTable;
 use App\Models\User;
@@ -80,4 +81,6 @@ class HomeController extends Controller
             return redirect()->route('home');
         }
     }
+
+    
 }
