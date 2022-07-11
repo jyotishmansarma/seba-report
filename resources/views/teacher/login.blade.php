@@ -2,7 +2,7 @@
 
 @section('main-content')
 
-<form method="POST" action="{{ route('so.auth') }}">
+<form method="POST" action="{{ route('teacher.auth') }}">
     @csrf
     <div class="row justify-content-md-center">
         <div class="col-xl-4 col-lg-5 col-md-6 col-sm-12">
@@ -11,14 +11,14 @@
 
                 <div class="login-box">
                     <!--error msg-->
-                    @if (Session::get('error'))
-                    <div class="alert alert-warning" role="alert">
-                        {{ Session::get('error') }}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
                     </div>
-
                     @endif
                     <!--end error msg-->
                     <a href="#" class="login-logo" style="display: block;
@@ -26,8 +26,18 @@
                                                         margin-right: auto;
                                                         width: 22%;">
                         <div class="form-group">
-                            <img src="{{ asset('asset/img/logo/ahsec_logo.png') }}" alt="CoolAdmin" width="72" height="72">
+                            <img src="{{ asset('asset/img/logo/seba.png') }}" alt="CoolAdmin" width="72" height="72">
                         </div>
+
+                    </a>
+                    <h5 style="text-align: center;"><b>SEBA REPORTING PORTAL</b><br />
+                        {{-- <span style="color: #0a3060;font-weight: bold"> H.S. Final Year Exam 2022</span>  --}}
+
+                    </h5>
+
+                    <div class="form-group">
+                        <img src="{{ asset('asset/img/logo/ahsec_logo.png') }}" alt="CoolAdmin" width="72" height="72">
+                    </div>
 
                     </a>
                     <h5 style="text-align: center;"><b>SEBA REPORTING PORTAL</b><br />
@@ -66,7 +76,7 @@
 <script>
     $(document).ready(function() {
 
-       
+
 
         $('#code').keyup(function(e) {
 

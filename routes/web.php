@@ -26,13 +26,13 @@ Route::any('logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::group(['prefix' => 'teacher'], function () {
 
-    Route::view('/login', 'so.login')->name('so.login');
-    Route::post('/login', [App\Http\Controllers\Teacher\LoginController::class, 'authenticate'])->name('so.auth');
+    Route::view('/login', 'teacher.login')->name('teacher.login');
+    Route::post('/login', [App\Http\Controllers\Teacher\LoginController::class, 'authenticate'])->name('teacher.auth');
 
     Route::post('/schoolnameajax', [App\Http\Controllers\AjaxController::class, 'schoolNameAjax'])->name('schoolnameajax');
 
     Route::group(['middleware' => 'so.auth'], function () {
-        Route::match(['get', 'post'], '/first-change-password', [MainController::class, 'firstChangePassword'])->name('so.firstChangePassword');
+        Route::match(['get', 'post'], '/first-change-password', [MainController::class, 'teacher_details'])->name('teacher.teacher_details');
         Route::get('/logout', [App\Http\Controllers\Teacher\LoginController::class, 'logout'])->name('so.logout');
        
     });

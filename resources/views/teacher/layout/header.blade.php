@@ -27,7 +27,7 @@
 
                     <li class="dropdown">
                         <a href="#" id="userSettings" class="user-settings" data-toggle="dropdown" aria-haspopup="true">
-                            {{-- <span class="user-name">{{auth()->user()->name}}</span> --}}
+                            <span class="user-name">{{Auth::guard('school')->user()->school_name}}</span>
                             <span class="avatar"><img src="{{asset('asset/img/logo/avatar.png')}}" style="border-radius: 20px"></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userSettings">

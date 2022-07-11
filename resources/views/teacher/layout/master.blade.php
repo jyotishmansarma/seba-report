@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 
-@include('so.layout.head')
+@include('teacher.layout.head')
 @yield('custom-style')
 <body>
 
@@ -11,7 +11,7 @@
 <!-- *************
     ************ Header section start *************
 ************* -->
-@include('so.layout.header')
+@include('teacher.layout.header')
 
 
 
@@ -24,7 +24,7 @@
 
 
 
-    @include('so.layout.nav')
+    @include('teacher.layout.nav')
 
 
     <!-- *************
@@ -61,11 +61,11 @@
             ************ Main container end *************
         ************* -->
 
-        <footer class="main-footer">© AHSEC</footer>
+        <footer class="main-footer">© SEBA</footer>
 
 </div>
 
-@include('so.layout.script')
+@include('teacher.layout.script')
 @yield('custom-script')
 
 </body>

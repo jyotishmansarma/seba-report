@@ -15,7 +15,7 @@ class SoAuthenticate extends Middleware
     protected function redirectTo($request)
     {
         if (! $request->expectsJson()) {
-            return route('so.login');
+            return route('teacher.login');
         }
     }
     protected function authenticate($request, array $guards)
