@@ -34,10 +34,13 @@
 
 
             <!-- Page header start -->
-            <div class="page-header">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item active">Dashboard</li>
-                </ol>
+            <div class="page-header" style="height:500px">
+                <ol class="breadcrumb" >
+                    <li class="breadcrumb-item active">
+                    
+                    </li>
+                </ol>         
+                
             </div>
             <!-- Page header end -->
 
@@ -61,7 +64,12 @@
             ************ Main container end *************
         ************* -->
 
-        <footer class="main-footer">© SEBA</footer>
+        <footer class="main-footer">© SEBA
+            <br>
+            Powerder by <img src="{{asset('asset/img/eduaidpng.png')}}" width="5%"/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Developed by <img src="{{asset('asset/img/siqes-white.png')}}" width="5%"/>
+        </footer>
 
 </div>
 
