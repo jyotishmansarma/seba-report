@@ -46,7 +46,7 @@
                         </div>
                         <div class="form-group">
                             <input type="text" name="login_pin" class="form-control" placeholder="Login Pin"
-                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  minlength="4" maxlength="4" required/>
+                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  minlength="6" maxlength="6" required/>
                             <br>
                             {{--  <span style="color: #0a58ca">Use Password or OTP sent to mobile to login</span>  --}}
                         </div>
