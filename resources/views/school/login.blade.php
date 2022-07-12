@@ -20,14 +20,24 @@
                         </ul>
                     </div>
                     @endif
+                    <center>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="{{ asset('asset/img/logo/seba.png') }}" alt="CoolAdmin" width="72" height="72">
+                        </div>
+                        <div class="col-md-6">
+                            <img src="{{asset('asset/img/eduaid-logo.png')}}" alt="CoolAdmin" width="72" height="72">
+                        </div>
+                    </div>
+                    </center>
                     <!--end error msg-->
                     <a href="#" class="login-logo" style="display: block;
                                                         margin-left: auto;
                                                         margin-right: auto;
                                                         width: 22%;">
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <img src="{{ asset('asset/img/logo/seba.png') }}" alt="CoolAdmin" width="72" height="72">
-                        </div>
+                        </div> --}}
 
                     </a>
                     <h5 style="text-align: center;"><b>SEBA School Login</b><br />
