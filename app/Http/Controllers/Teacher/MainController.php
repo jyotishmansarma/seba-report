@@ -52,4 +52,23 @@ class MainController extends Controller
         }
 
     }
+    public function firstChangePassword(Request $request)
+    {
+
+
+        if ($request->isMethod('get')) {
+            return view('school.firstChangePassword');
+        } else {
+
+            $request->validate(
+                ['password' => 'confirmed|min:5|max:23']
+            );
+
+
+            $password = Hash::make($request->password);
+            So::where(['id' => Auth::id()])->update(['first_password_status' => 1, 'password' => $password]);
+            session()->flash('message_p', 'Successfully Password Updated.');
+            return redirect()->route('so.bankDetails');
+        }
+    }
 }

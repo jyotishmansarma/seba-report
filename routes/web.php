@@ -42,3 +42,21 @@ Route::group(['prefix' => 'teacher'], function () {
     Route::post('import', [ImportExportController::class, 'import'])->name('import');
 });
 
+Route::group(['prefix' => 'school'], function () {
+
+    Route::view('/login', 'school.login')->name('school.login');
+    Route::post('/login', [App\Http\Controllers\School\LoginController::class, 'authenticate'])->name('school.auth');
+    Route::match(['get', 'post'], '/first-change-password', [MainController::class, 'firstChangePassword'])->name('school.firstChangePassword');
+
+    Route::post('/schoolnameajax', [App\Http\Controllers\AjaxController::class, 'schoolNameAjax'])->name('schoolnameajax');
+
+    Route::group(['middleware' => 'so.auth'], function () {
+        Route::match(['get', 'post'], '/first-change-password', [MainController::class, 'teacher_details'])->name('teacher.teacher_details');
+        Route::get('/logout', [App\Http\Controllers\Teacher\LoginController::class, 'logout'])->name('so.logout');
+    });
+
+    //route for import school
+    Route::get('importExportView', [ImportExportController::class, 'importExportView']);
+    Route::post('import', [ImportExportController::class, 'import'])->name('import');
+});
+
