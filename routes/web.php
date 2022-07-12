@@ -46,13 +46,14 @@ Route::group(['prefix' => 'school'], function () {
 
     Route::view('/login', 'school.login')->name('school.login');
     Route::post('/login', [App\Http\Controllers\School\LoginController::class, 'authenticate'])->name('school.auth');
-    Route::match(['get', 'post'], '/first-change-password', [MainController::class, 'firstChangePassword'])->name('school.firstChangePassword');
+    // Route::match(['get', 'post'], '/first-change-password', [MainController::class, 'firstChangePassword'])->name('school.firstChangePassword');
 
     Route::post('/schoolnameajax', [App\Http\Controllers\AjaxController::class, 'schoolNameAjax'])->name('schoolnameajax');
 
     Route::group(['middleware' => 'so.auth'], function () {
-        Route::match(['get', 'post'], '/first-change-password', [MainController::class, 'teacher_details'])->name('teacher.teacher_details');
+        Route::match(['get', 'post'], '/first-change-password', [MainController::class, 'firstChangePassword'])->name('school.firstChangePassword');
         Route::get('/logout', [App\Http\Controllers\Teacher\LoginController::class, 'logout'])->name('so.logout');
+        Route::get('/pin', [App\Http\Controllers\Teacher\MainController::class, 'pin'])->name('school.pin');
     });
 
     //route for import school

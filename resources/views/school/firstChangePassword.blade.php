@@ -1,4 +1,4 @@
-@extends('so.layout.master')
+@extends('teacher.layout.master')
 
 @section('custom-style')
     <style type="text/css">
@@ -83,7 +83,7 @@
             <marquee style="color:red"><i class="icon-warning"></i><b>Please update your password to continue</b>
             </marquee>
             <br><br>
-            <form action="{{ route('so.firstChangePassword') }}" method="post">
+            <form action="{{ route('school.firstChangePassword') }}" method="post">
                 @csrf
                 <div class="card m-0">
 

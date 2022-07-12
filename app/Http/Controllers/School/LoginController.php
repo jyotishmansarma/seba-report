@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Teacher;
+namespace App\Http\Controllers\School;
 
 use App\Http\Controllers\Controller;
 use App\Models\School;
@@ -21,9 +21,10 @@ class LoginController extends Controller
         ]);
         if (Auth::guard('school')->attempt(['code' => $request->code, 'password' => $request->password], 1)) {
             if (Auth::guard('school')->user()->first_password_status == null) {
+                // dd('hi');
                 return redirect()->route('school.firstChangePassword');
             } else {
-                return redirect()->route('so.home');
+                return redirect()->route('school.pin');
             }
         } else {
 

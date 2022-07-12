@@ -32,14 +32,14 @@
                     Dashboard
                 </a>
             </li>
-            {{--  <li class="nav-item">
-                <a class="@if (Route::current()->getName()=='so.bankDetails') active-page @endif nav-link "
-                   @if($menu==true) href="{{ route('so.bankDetails') }}" @else href="#" @endif>
+             <li class="nav-item">
+                <a class="nav-link "
+                  >
                     <i class="icon-home nav-icon"></i>
-                    Bank details
+                    Teacher details
                 </a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 @php $soID= Crypt::encrypt(Auth::guard('so')->user()->id); @endphp
                 <a class="nav-link " href="{{ route('so.getAppointment', $soID) }}" target="_blank">
                     <i class="icon-book nav-icon"></i>

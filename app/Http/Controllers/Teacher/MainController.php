@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
+use App\Models\School;
 use App\Models\So;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
@@ -66,9 +67,15 @@ class MainController extends Controller
 
 
             $password = Hash::make($request->password);
-            So::where(['id' => Auth::id()])->update(['first_password_status' => 1, 'password' => $password]);
+            School::where(['id' => Auth::id()])->update(['first_password_status' => 1, 'password' => $password]);
             session()->flash('message_p', 'Successfully Password Updated.');
-            return redirect()->route('so.bankDetails');
+            return redirect()->route('school.pin');
         }
+    }
+     
+    public function pin()
+    {
+       $login_pin= Auth::guard('school')->user()->login_pin;
+        return view('school.pin',compact('login_pin'));
     }
 }
