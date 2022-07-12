@@ -44,7 +44,8 @@ class MainController extends Controller
                 'name'=>$request->name,
                 'mobile'=>$request->mobile,
                 'email'=>$request->email,
-                'subject'=>$request->subject
+                'subject'=>$request->subject,
+                'date_of_birth' => $request->dob
            ];
 
             Teacher::create($data);
