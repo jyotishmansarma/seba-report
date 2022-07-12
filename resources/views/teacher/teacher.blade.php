@@ -130,7 +130,7 @@
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label for="bankName" class="col-form-label">Enter OTP</label>
-                                        <input type="text" class="form-control" name="mobile" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" placeholder="Enter OTP">
+                                        <input type="text" class="form-control" name="otp" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" placeholder="Enter OTP" minlength="4" maxlength="6">
 
                                     </div>
                                 </div>
