@@ -18,7 +18,7 @@ class LoginController extends Controller
         $request->validate([
 
             'code' => ['required'],
-            'login_pin' => ['required', 'digits:4'],
+            'login_pin' => ['required', 'digits:6'],
         ]);
         $teacher = School::where(['code' => $request->code, 'login_pin' => $request->login_pin])->first();
 
