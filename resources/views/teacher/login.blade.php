@@ -20,43 +20,50 @@
                         </ul>
                     </div>
                     @endif
+                    <center>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="{{ asset('asset/img/logo/seba.png') }}" alt="CoolAdmin" width="72" height="72">
+                        </div>
+                        <div class="col-md-6">
+                            <img src="{{asset('asset/img/eduaid-logo.png')}}" alt="CoolAdmin" width="72" height="72">
+                        </div>
+                    </div>
+                    </center>
                     <!--end error msg-->
                     <a href="#" class="login-logo" style="display: block;
                                                         margin-left: auto;
                                                         margin-right: auto;
                                                         width: 22%;">
                         <div class="form-group">
-                            <img src="{{ asset('asset/img/logo/seba.png') }}" alt="CoolAdmin" width="72" height="72">
+
+
+                            <!-- <img src="{{ asset('asset/img/logo/seba.png') }}" alt="CoolAdmin" width="72" height="72"> -->
                         </div>
 
                     </a>
-                    <h5 style="text-align: center;"><b>SEBA REPORTING PORTAL</b><br />
+                    <h5 style="text-align: center;"><b>SEBA EDUAID SCHOOL PORTAL</b><br />
                         {{-- <span style="color: #0a3060;font-weight: bold"> H.S. Final Year Exam 2022</span>  --}}
 
                     </h5>
 
-                        <div class="form-group">
-                            <input type="text" class="form-control" name="code" id="code"
-                                   placeholder="Enter School Code"
-                                   minlength="7" maxlength="7"
-                                  
-                                   required/>
-                            <br>
-                            <span id="otp_message" style="color: green"></span>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" name="login_pin" class="form-control" placeholder="Login Pin"
-                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  minlength="6" maxlength="6" required/>
-                            <br>
-                            {{--  <span style="color: #0a58ca">Use Password or OTP sent to mobile to login</span>  --}}
-                        </div>
-                        {{-- <div class="actions"> --}}
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="code" id="code" placeholder="Enter School Code" minlength="7" maxlength="7" required />
+                        <br>
+                        <span id="otp_message" style="color: green"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="login_pin" class="form-control" placeholder="Login Pin" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" minlength="6" maxlength="6" required />
+                        <br>
+                        {{-- <span style="color: #0a58ca">Use Password or OTP sent to mobile to login</span>  --}}
+                    </div>
+                    {{-- <div class="actions"> --}}
 
                     </a>
                     {{-- <h5 style="text-align: center;"><b>SEBA REPORTING PORTAL</b><br />
                         {{-- <span style="color: #0a3060;font-weight: bold"> H.S. Final Year Exam 2022</span>  --}}
 
-                    {{-- </h5> --}} 
+                    {{-- </h5> --}}
 
                     {{-- <div class="form-group">
                         <input type="text" class="form-control" name="code" id="code" placeholder="Enter School Code" minlength="6" maxlength="10" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" required />
@@ -67,7 +74,7 @@
                         <input type="text" name="login_pin" class="form-control" placeholder="Login Pin" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" required />
                         <br>
                         {{-- <span style="color: #0a58ca">Use Password or OTP sent to mobile to login</span>  --}}
-                    {{-- </div> --}} 
+                    {{-- </div> --}}
                     <div class="actions">
 
                         <button type="submit" class="btn btn-info">Login</button>
@@ -96,7 +103,7 @@
             e.preventDefault();
 
 
-            if ($(this).val().length >= 6 ) {
+            if ($(this).val().length >= 6) {
 
 
                 $.ajax({
