@@ -22,10 +22,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Show the application dashboard.
@@ -35,22 +35,8 @@ class HomeController extends Controller
     public function index()
     {
 
-        $time_table = ExamRoutine::get();
 
-        $date = [];
-        $user = [];
-        $total_student = [];
-        $expelled=null;
-        foreach ($time_table->unique('date') as $time_tables) {
-            $date[] = $time_tables->date;
-            $total_reports = SoReport::select(\DB::raw('count(DISTINCT so_id) as total_report'))->where('time_table_id',$time_tables->tt_id)->first();
-            $user[] =  $total_reports->total_report;
-            $total_student[] = SoReport::where('time_table_id', $time_tables->tt_id)->sum(\DB::raw('total_male_present + total_female_present'));
-
-            $expelled = ExpelledStudentList::count();
-        }
-
-        return view('admin.home', compact(['time_table', 'date', 'user', 'total_student','expelled']));
+        return view('index',);
     }
 
 
